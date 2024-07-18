@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.ow{
+    width: 200px;
+    height: 150px;
+    display: inline;
+    grid-template-columns: auto auto auto;
+    grid-gap: 60px 70px ;
+    background-color: white;
+    padding: 40px;   
+}
+.box{
+    background-color: transparent;
+    padding: 39px;
+    float: left;
+    padding-left: 40px;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+.im{
+    width: 200px;
+    height: 150px;
+    border-radius: 50px; 
+    transition: all .3s;
+}
+.im:hover{
+    transform: scale(1.2,1.2);
+}
+.fo{
+    background-image: url(background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 38px;
+    font-family: 'Times New Roman', Times, serif;
+    animation: move 1s linear infinite;
+}
+
+@keyframes move{
+    0%{
+        background-color: black;
+        background-position: center;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    25%{
+        background-image: url(sofa\ 7.jpg);
+        background-position: center;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    50%{
+        background-image: url(ottomans\ 1.webp);
+        background-position: center;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    75%{
+        background-image: url(tv\ 2.webp);   
+        background-position: center;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    100%{
+        background-color: black;
+        background-position: center;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+ }
+.btn{
+    width: 200px;
+    height: 60px;
+    border-radius: 50px;
+    margin-left: 5px;
+    margin-top: 17px;
+    border: 1px solid black;
+    transition: all .2s;
+    background-color: transparent;
+}
+.btn:hover{
+    background-color:#f45c43;
+    color: white;
+    transform: scale(1.1,1.1);
+    border: 1px white;
+}
+.old-price{
+    text-decoration: line-through;
+    font-size: 19px;
+    color: gray;
+    margin-left: -70px;
+}
+.new-price{
+    color: red;
+    font-size: 19px;
+    margin-left: -70px;
+}
+.pa{
+    color: black;
+    font-size: 20px;
+    text-decoration: solid;
+}
+.mar{
+    background-color: transparent;
+    color: rgb(58, 55, 55);
+    font-size: 45px;
+}
+
