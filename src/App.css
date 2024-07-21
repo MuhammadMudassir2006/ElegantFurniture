@@ -26,8 +26,21 @@
   right: 0;
   z-index: 1000; /* High z-index to ensure it is on top */
   background-color: rgba(0, 0, 0, 0.8); /* Background color for visibility */
+  transition: background-color 0.3s, padding 0.3s;
+  opacity: 50%;
 }
 
+
+.navbar.hidden {
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+  padding: 0;
+}
+
+.navbar.visible {
+  opacity: 1;
+  padding: 35px 0; /* Restore original padding */
+}
 .logo {
   width: 120px;
 }

@@ -3,8 +3,33 @@ import './App.css';
 import Gallery from './gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { gsap } from 'gsap';
 
 function App() {
+  useEffect(() => {
+    // GSAP animation for navbar hiding and showing
+    const navbar = document.querySelector('.navbar');
+
+    gsap.set(navbar, { y: 0 }); // Initially hide navbar off-screen
+
+    // Add mouseover and mouseleave event listeners to navbar
+    navbar.addEventListener('mouseover', handleMouseover);
+    navbar.addEventListener('mouseleave', handleMouseleave);
+
+    function handleMouseover() {
+      gsap.to(navbar, { y: 0, duration: 0.3, ease: 'power2.inOut' }); // Show navbar
+    }
+
+    function handleMouseleave() {
+      gsap.to(navbar, { y: '-90%', duration: 0.3, ease: 'power2.inOut' }); // Hide navbar
+    }
+
+    return () => {
+      navbar.removeEventListener('mouseover', handleMouseover);
+      navbar.removeEventListener('mouseleave', handleMouseleave);
+    };
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -12,24 +37,15 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    // Add smooth scrolling to all links
-    const links = document.querySelectorAll('a[href*="#"]');
-    for (let link of links) {
-      link.addEventListener('click', function (event) {
-        event.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop,
-            behavior: 'smooth',
-          });
-        }
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
       });
     }
-  }, []);
+  };
 
   return (
     <>
@@ -40,7 +56,7 @@ function App() {
             <li><a href="#section3" data-text="Benches & Ottomans">Benches & Ottomans</a></li>
             <li><a href="#section1" data-text="Comfortable Beds">Comfortable Beds</a></li>
             <li><a href="#section2" data-text="TV & Stands">TV & Stands</a></li>
-            <li><a href="#sectionLast" data-text="Contact">Contact</a></li>
+            <li><a href="#sectionLast" onClick={() => scrollToSection('sectionLast')} data-text="Contact">Contact</a></li>
           </ul>
         </div>
 
@@ -55,12 +71,10 @@ function App() {
       </div>
       <br />
 
-
       <button type="button" onClick={scrollToTop} className="scroll-to-top-btn">
         <FontAwesomeIcon icon={faArrowUp} />
       </button>
       <Gallery />
-
     </>
   );
 }
